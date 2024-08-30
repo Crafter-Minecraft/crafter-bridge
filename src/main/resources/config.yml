@@ -18,18 +18,6 @@ send:
     # Here %s is player name
     formatting: "**%s** died"
     enabled: true
-  commands:
-    webhook-url: null
-    # Here %s is player name, second is command name
-    formatting: "`%s` issued **/%s**"
-    enabled: false
-    ignored-commands:
-      - "login"
-      - "l"
-      - "log"
-      - "register"
-      - "reg"
-      - "r"
   achievements:
     # Here %s is player name, second %s is advancement title
     formatting: "**%s** got `%s` achievement!"

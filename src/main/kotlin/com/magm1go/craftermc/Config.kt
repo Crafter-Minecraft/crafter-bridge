@@ -12,14 +12,12 @@ object Config {
 
     var webhookUrl: String? = null
     var loggingEnabled: Boolean = false
-    var ignoredCommands: List<String> = emptyList()
 
     fun reload(plugin: Plugin) {
         plugin.reloadConfig()
         fileConfiguration = plugin.config
         webhookUrl = fileConfiguration?.getString("webhook-url")
         loggingEnabled = fileConfiguration?.getBoolean("logging") ?: false
-        ignoredCommands = fileConfiguration?.getStringList("send.commands.ignored-commands") ?: emptyList()
         LOGGER.info("Configuration reloaded")
     }
 
@@ -30,6 +28,4 @@ object Config {
 
     fun formatting(name: String): String? =
         bukkitConfig()?.getString("send.$name.formatting")
-
-    fun commandsWebhookUrl(): String? = bukkitConfig()?.getString("send.commands.webhook-url")
 }

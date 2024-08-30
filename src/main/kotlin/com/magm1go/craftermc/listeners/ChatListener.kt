@@ -18,18 +18,4 @@ object ChatListener : Listener {
                 event.player.name,
                 (event.message() as TextComponent).content()
             )
-
-    @EventHandler
-    private fun onCommandInvoke(event: PlayerCommandPreprocessEvent) {
-        val commandName = event.message.substring(1)
-        if (commandName in Config.ignoredCommands) return
-
-        val webhookUrl = Config.commandsWebhookUrl() ?: return
-        val template = CrafterDiscord.getTemplate("commands") ?: return
-
-        CrafterDiscord.sendWebhookCommands(
-            webhookUrl,
-            template.format(event.player.name, commandName)
-        )
-    }
 }

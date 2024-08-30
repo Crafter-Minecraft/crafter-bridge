@@ -84,10 +84,6 @@ class CrafterDiscord : JavaPlugin() {
         }
 
         @JvmStatic
-        fun sendWebhookCommands(url: String?, content: String) =
-            sendWebhook(url, content)
-
-        @JvmStatic
         fun getTemplate(name: String): String? = when {
             Config.canSend(name) -> Config.formatting(name)
             else -> null
