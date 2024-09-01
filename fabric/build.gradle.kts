@@ -34,6 +34,8 @@ val shadowJar by tasks.getting(ShadowJar::class) {
 
 tasks.getByName<RemapJarTask>("remapJar") {
     input.set(shadowJar.archiveFile.get())
+    archiveBaseName.set("crafter-bridge-fabric")
+
     dependsOn(tasks.getByName("shadowJar"))
 }
 
