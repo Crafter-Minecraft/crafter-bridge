@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "crafter-bridge-fabric",
+  "version": "1.0.0",
+  "name": "crafter-bridge-fabric",
+  "description": "Mod that provides bridge between your minecraft fabric server and Discord chat.",
+  "authors": ["magmigo"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "server": [{
+      "value": "com.magmigo.craftermc.Crafter",
+      "adapter": "kotlin"
+    }]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "fabric": "*",
+    "fabric-language-kotlin": ">=1.12.1+kotlin.2.0.20",
+    "minecraft": "1.21"
+  }
+}

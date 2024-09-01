@@ -1,0 +1,31 @@
+webhook-url: null
+logging: false
+
+send:
+  messages:
+    # Here firt %s is player name and second is message content
+    formatting: "`%s`: %s"
+    enabled: true
+  join:
+    # Here %s is player name
+    formatting: "**%s joined to the server!**"
+    enabled: true
+  leave:
+    # Here %s is player name
+    formatting: "**%s left the server!**"
+    enabled: true
+  death:
+    # Here %s is player name
+    formatting: "**%s** died"
+    enabled: true
+  achievements:
+    # Here %s is player name, second %s is advancement title
+    formatting: "**%s** got `%s` achievement!"
+    enabled: true
+  server:
+    open:
+      formatting: "Server open!"
+      enabled: true
+    shutdown:
+      formatting: "Server closed!"
+      enabled: true

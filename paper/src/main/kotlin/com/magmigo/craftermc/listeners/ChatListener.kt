@@ -1,19 +1,15 @@
-package com.magm1go.craftermc.listeners
+package com.magmigo.craftermc.listeners
 
-import com.magm1go.craftermc.Config
-import com.magm1go.craftermc.CrafterDiscord
+import com.magmigo.craftermc.WebhookMain
 import io.papermc.paper.event.player.AsyncChatEvent
-import io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent
 import net.kyori.adventure.text.TextComponent
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.player.PlayerCommandPreprocessEvent
-import org.bukkit.event.player.PlayerCommandSendEvent
 
 object ChatListener : Listener {
     @EventHandler
     private fun onMessage(event: AsyncChatEvent) =
-        CrafterDiscord.sendWebhook(
+        WebhookMain.sendWebhook(
             "messages",
                 event.player.name,
                 (event.message() as TextComponent).content()

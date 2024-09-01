@@ -1,29 +1,24 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
-    kotlin("jvm") version "2.0.0"
-    id("com.gradleup.shadow") version "8.3.0"
+    kotlin("jvm") version "2.0.20" apply false
+    id("com.gradleup.shadow") version "8.3.0" apply false
 }
 
-group = project.group
-version = project.version
+group = "com.magmigo.craftermc"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
 }
 
-dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
-}
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "com.gradleup.shadow")
 
-tasks {
-    withType<ShadowJar> {
-        archiveClassifier.set("")
-        minimize()
+    repositories {
+        mavenCentral()
     }
-}
 
-kotlin {
-    jvmToolchain(21)
+    group = rootProject.group
+    version = rootProject.version
 }
