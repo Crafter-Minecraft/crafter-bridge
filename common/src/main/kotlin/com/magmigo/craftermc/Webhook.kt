@@ -1,5 +1,6 @@
 package com.magmigo.craftermc
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import org.apache.logging.log4j.Logger
@@ -28,6 +29,9 @@ object WebhookMain {
 
         val jsonData = JsonObject().apply {
             add("content", JsonPrimitive(content))
+            add("mention_everyone", JsonPrimitive(false))
+            add("mentions", JsonArray())
+            add("mention_roles", JsonArray())
         }
 
         val request = HttpRequest.newBuilder()
