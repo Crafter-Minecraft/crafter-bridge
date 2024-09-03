@@ -23,20 +23,21 @@ dependencies {
     }
 }
 
+tasks {
+    val shadowJar by getting(ShadowJar::class) {
+        archiveBaseName.set("${rootProject.name}-${project.name}")
+        archiveClassifier.set("")
+        configurations = listOf(project.configurations.shadow.get())
 
-val shadowJar by tasks.getting(ShadowJar::class) {
-    archiveBaseName.set("${rootProject.name}-${project.name}")
-    archiveClassifier.set("")
-    configurations = listOf(project.configurations.shadow.get())
+        minimize()
+    }
 
-    minimize()
-}
+    getByName<RemapJarTask>("remapJar") {
+        inputFile.set(shadowJar.archiveFile.get())
+        archiveBaseName.set("crafter-bridge-fabric")
 
-tasks.getByName<RemapJarTask>("remapJar") {
-    input.set(shadowJar.archiveFile.get())
-    archiveBaseName.set("crafter-bridge-fabric")
-
-    dependsOn(tasks.getByName("shadowJar"))
+        dependsOn(getByName("shadowJar"))
+    }
 }
 
 kotlin.jvmToolchain(21)

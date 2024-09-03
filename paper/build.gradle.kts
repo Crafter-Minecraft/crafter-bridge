@@ -4,7 +4,6 @@ group = project.group
 version = project.version
 
 repositories {
-    mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
 }
 
