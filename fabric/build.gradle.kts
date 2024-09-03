@@ -34,9 +34,8 @@ tasks {
 
     getByName<RemapJarTask>("remapJar") {
         inputFile.set(shadowJar.archiveFile.get())
-        archiveBaseName.set("crafter-bridge-fabric")
 
-        dependsOn(getByName("shadowJar"))
+        dependsOn(shadowJar)
     }
 }
 

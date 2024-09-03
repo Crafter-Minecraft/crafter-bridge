@@ -12,12 +12,18 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
 }
 
-tasks.withType<ShadowJar> {
-    archiveBaseName.set("${rootProject.name}-${project.name}")
-    archiveClassifier.set("")
+tasks {
+    val shadowJar by getting(ShadowJar::class) {
+        // archiveBaseName.set("${rootProject.name}-${project.name}")
+        archiveClassifier.set("")
 
-    mergeServiceFiles()
-    minimize()
+        mergeServiceFiles()
+        minimize()
+    }
+
+    withType<Jar> {
+        archiveBaseName.set("${rootProject.name}-${project.name}")
+    }
 }
 
 kotlin.jvmToolchain(21)

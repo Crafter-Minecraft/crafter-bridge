@@ -29,9 +29,9 @@ object WebhookMain {
 
         val jsonData = JsonObject().apply {
             add("content", JsonPrimitive(content))
-            add("mention_everyone", JsonPrimitive(false))
-            add("mentions", JsonArray())
-            add("mention_roles", JsonArray())
+            add("allowed_mentions", JsonObject().apply {
+                add("parse", JsonArray())
+            })
         }
 
         val request = HttpRequest.newBuilder()
